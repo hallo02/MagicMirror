@@ -56,8 +56,6 @@
                 this.modules.slides = this.config.slides;
             }
 
-        
-	
             this.modules.currentIndex = -1;
             this.moduleTransition.call(this.modules);
             //this.moduleTransition.bind(this.modules);
