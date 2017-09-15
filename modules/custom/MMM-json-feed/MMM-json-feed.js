@@ -9,7 +9,8 @@ Module.register("MMM-json-feed", {
     title: 'JSON Feed',
     url: '',
     updateInterval: 600000,
-    values: []
+    values: [],
+    factor:1
   },
 
   start: function() {
@@ -80,7 +81,7 @@ Module.register("MMM-json-feed", {
         current = current[split.shift()];
       }
 
-      return current/100;
+      return current/this.config.factor;
     }
 
     return null;
