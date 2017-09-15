@@ -47,7 +47,8 @@
     "spectron": "^3.6.4",
     "stylelint": "^7.11.0",
     "stylelint-config-standard": "latest",
-    "time-grunt": "latest"
+    "time-grunt": "latest",
+    "twitter": "latest"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
