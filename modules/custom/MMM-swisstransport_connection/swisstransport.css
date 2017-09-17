@@ -9,12 +9,9 @@
 
 .swisstransport table {
     width: 400px;
+    text-align: "right" !important;
 }
 
 .swisstransport .red {
     color: #FF0000
-}
-
-.duration{
-	text-align:center !important;
 }
