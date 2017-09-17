@@ -28,7 +28,7 @@ Module.register("MMM-swisstransport_connection",{
 
 	// Define required scripts.
 	getStyles: function() {
-		return ["swisstransport.css", "font-awesome.css"];
+		return ["font-awesome.css"];
 	},
 
 	// Define required scripts.
@@ -54,6 +54,7 @@ Module.register("MMM-swisstransport_connection",{
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
+		
 
 		if (this.config.id === "") {
 			wrapper.innerHTML = "Please set the correct Station ID: " + this.name + ".";
@@ -68,8 +69,7 @@ Module.register("MMM-swisstransport_connection",{
 		}
 
 		var table = document.createElement("table");
-		table.className = "swisstransport";
-		table.className = "small";
+		table.className = "small align-right";
 		
 		
 		for (var c in this.connections) {
@@ -79,23 +79,6 @@ Module.register("MMM-swisstransport_connection",{
 			var row = document.createElement("tr");
 			table.appendChild(row);
 
-			
-			
-			/*
-        	if(trains.delay) {
-                            var delayCell = document.createElement("td");
-                            delayCell.className = "delay red";
-                            delayCell.innerHTML = "+" + trains.delay + " min";
-                            row.appendChild(delayCell);
-            } else {
-                            var delayCell = document.createElement("td");
-                            delayCell.className = "delay red";
-                            delayCell.innerHTML = trains.delay;
-                            row.appendChild(delayCell);
-            }
-            */
-			
-			
 			var trainFromDepCell = document.createElement("td");
 			trainFromDepCell.innerHTML = connection.fromdeparture+" - "+connection.toarrival;
 			trainFromDepCell.className = "bright";

@@ -24,6 +24,12 @@
         },
       	start: function(){
     		this.sendSocketNotification("mm","mm");
+    		var self = this;
+    		document.onkeyup = function(e){
+    			if(e.key=="c"){
+    				self.moduleTransition.call(self.modules);
+    			}
+    		};
        	},
       	notificationReceived: function (notification) {
             var position, positions = ['top_bar', 'bottom_bar', 'top_left', 'bottom_left', 'top_center', 'bottom_center', 'top_right', 'bottom_right', 'upper_third', 'middle_center', 'lower_third'];
