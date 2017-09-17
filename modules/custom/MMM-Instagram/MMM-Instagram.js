@@ -14,7 +14,8 @@ Module.register('MMM-Instagram', {
         lang: 'en-us',
         id: '',
         animationSpeed: 1000,
-        updateInterval: 60000, // 10 minutes
+        updateInterval: 5000, // 10 seconds
+        fetchInterval: 600000, // 10 minutes
         access_token: '',
         count: 200,
         min_timestamp: 0,
@@ -45,13 +46,11 @@ Module.register('MMM-Instagram', {
     },
 
     grabPhotos: function() {
-        // the notifications are not working for some reason... so we won't do anything asynchronously
-        // we will just make the call to the method to get the object with photo links....
-        //Log.info('sending socket notification: INSTAGRAM_GET and URL: ' + this.url);
+
         this.sendSocketNotification("INSTAGRAM_GET", this.url);
         
         // this may not be needed... need to think about it.
-        //setTimeout(this.grabPhotos, this.config.interval, this);
+        setTimeout(this.grabPhotos, this.config.fetchInterval);
     },
     
     
@@ -104,7 +103,7 @@ Module.register('MMM-Instagram', {
         }, this.config.updateInterval);
     },
 
-    /*
+    /*w
      * getParams()
      * returns the query string required for the request to flickr to get the 
      * photo stream of the user requested
@@ -129,7 +128,7 @@ Module.register('MMM-Instagram', {
             
             // we want to update the dom the first time and then schedule next updates
             if (!this.loaded) {
-            this.updateDom(1000);
+            	this.updateDom(1000);
                 this.scheduleUpdateInterval();
             }
             
