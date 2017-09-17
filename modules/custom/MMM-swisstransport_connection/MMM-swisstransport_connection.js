@@ -68,6 +68,7 @@ Module.register("MMM-swisstransport_connection",{
 		}
 
 		var table = document.createElement("table");
+		table.className = "swisstransport";
 		table.className = "small";
 		
 		
