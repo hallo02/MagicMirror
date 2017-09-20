@@ -14,8 +14,8 @@ Module.register('MMM-Instagram', {
         lang: 'en-us',
         id: '',
         animationSpeed: 1000,
-        updateInterval: 5000, // 10 seconds
-        fetchInterval: 600000, // 10 minutes
+        updateInterval: 2000, // 10 seconds
+        fetchInterval: 5000, // 10 minutes
         access_token: '',
         count: 200,
         min_timestamp: 0,
@@ -43,14 +43,15 @@ Module.register('MMM-Instagram', {
         this.activeItem = 0;
         this.url = 'https://api.instagram.com/v1/users/self/media/recent' + this.getParams();
         this.grabPhotos();
+        var _self = this        
+        setInterval(function(){
+        	_self.sendSocketNotification("INSTAGRAM_GET", _self.url);
+        }, _self.config.fetchInterval);
+        
     },
 
     grabPhotos: function() {
-
         this.sendSocketNotification("INSTAGRAM_GET", this.url);
-        
-        // this may not be needed... need to think about it.
-        setTimeout(this.grabPhotos, this.config.fetchInterval);
     },
     
     
@@ -120,7 +121,9 @@ Module.register('MMM-Instagram', {
     socketNotificationReceived: function(notification, payload) {
         //Log.info('socketNotificationReceived: ' + notification);
         if (notification === 'INSTAGRAM_IMAGE_LIST')
-        {
+        {	
+        	console.log("got image json");
+        	console.log(payload);
             //Log.info('received INSTAGRAM_IMAGE_LIST');
             this.images = payload;
             

@@ -49,7 +49,7 @@
                         "photolink" : media
                     });
                 }
-                //console.log("count: " + images.photo.length);
+                console.log("send pictures to module MMM-instagram, count: " + images.photo.length);
                 self.sendSocketNotification('INSTAGRAM_IMAGE_LIST', images);
                 
             }
