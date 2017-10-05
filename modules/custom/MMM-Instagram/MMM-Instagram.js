@@ -94,11 +94,11 @@ Module.register('MMM-Instagram', {
     scheduleUpdateInterval: function() {
         var self = this;
 
-        Log.info("Scheduled update interval set up...");
+       // Log.info("Scheduled update interval set up...");
         self.updateDom(self.config.animationSpeed);
 
         setInterval(function() {
-            Log.info("incrementing the activeItem and refreshing");
+           // Log.info("incrementing the activeItem and refreshing");
             self.activeItem++;
             self.updateDom(self.config.animationSpeed);
         }, this.config.updateInterval);
@@ -122,8 +122,8 @@ Module.register('MMM-Instagram', {
         //Log.info('socketNotificationReceived: ' + notification);
         if (notification === 'INSTAGRAM_IMAGE_LIST')
         {	
-        	console.log("got image json");
-        	console.log(payload);
+        	//console.log("got image json");
+        	//console.log(payload);
             //Log.info('received INSTAGRAM_IMAGE_LIST');
             this.images = payload;
             
