@@ -224,7 +224,16 @@ Module.register('MMM-cryptocurrency', {
 
       var priceWrapper = document.createElement('td')
       var price = document.createElement('price')
-      price.innerHTML = apiResult[j].price
+      price.innerHTML = apiResult[j].price+" ("
+      
+      this.config.amountsOfInterest[j].forEach(function(entry) {
+		price.innerHTML += Math.round(entry*apiResult[j].price.split(" ")[0])
+		price.innerHTML += " | "
+		});
+		price.innerHTML = price.innerHTML.substring(0,price.innerHTML.length-3)
+		price.innerHTML += ")"
+      
+      
       priceWrapper.appendChild(price)
 
       if (displayType == 'logoWithChanges') {
