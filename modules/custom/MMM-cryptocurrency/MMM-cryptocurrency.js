@@ -224,14 +224,18 @@ Module.register('MMM-cryptocurrency', {
 
       var priceWrapper = document.createElement('td')
       var price = document.createElement('price')
-      price.innerHTML = apiResult[j].price+" ("
+      price.innerHTML = apiResult[j].price+" <small>("
+      
       
       this.config.amountsOfInterest[j].forEach(function(entry) {
-		price.innerHTML += Math.round(entry*apiResult[j].price.split(" ")[0])
+      	var balanceInChf = Math.round(entry*apiResult[j].price.split(" ")[0])
+		price.innerHTML += balanceInChf
 		price.innerHTML += " | "
-		});
+		});	
+		
+		
 		price.innerHTML = price.innerHTML.substring(0,price.innerHTML.length-3)
-		price.innerHTML += ")"
+		price.innerHTML += ")</small>"
       
       
       priceWrapper.appendChild(price)
